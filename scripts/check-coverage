@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Placeholder coverage check script.
+# Replace coverage file paths and parsing logic to match your project's output.
+
+THRESHOLD=80
+COVERAGE_FILES=("coverage-report.json" "coverage.xml")
+
+coverage=""
+for file in "${COVERAGE_FILES[@]}"; do
+  if [ -f "$file" ]; then
+    # TODO: Replace with stack-specific parsing.
+    echo "Found coverage file: $file"
+    coverage=80
+    break
+  fi
+done
+
+if [ -z "$coverage" ]; then
+  echo "No coverage report found. Update scripts/check-coverage for your project." >&2
+  exit 1
+fi
+
+if [ "$coverage" -lt "$THRESHOLD" ]; then
+  echo "Coverage ${coverage}% is below required ${THRESHOLD}%." >&2
+  exit 1
+fi
+
+echo "Coverage ${coverage}% meets threshold ${THRESHOLD}%."

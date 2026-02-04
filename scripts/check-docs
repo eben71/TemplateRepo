@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Placeholder documentation check script.
+# Update required sections and references to match your derived project.
+
+REQUIRED_HEADINGS=("Repo Structure" "Local Development")
+REQUIRED_COMMANDS=("make setup" "make lint" "make format" "make format-check" "make typecheck" "make test" "make build")
+REQUIRED_DIRS=("src/" "apps/" "packages/" "docs/" "infra/docker/" ".github/")
+
+README="README.md"
+
+if [ ! -f "$README" ]; then
+  echo "README.md not found." >&2
+  exit 1
+fi
+
+missing=false
+
+for heading in "${REQUIRED_HEADINGS[@]}"; do
+  if ! rg -n "^## ${heading}$" "$README" > /dev/null; then
+    echo "Missing heading: ${heading}" >&2
+    missing=true
+  fi
+done
+
+for cmd in "${REQUIRED_COMMANDS[@]}"; do
+  if ! rg -n "${cmd}" "$README" > /dev/null; then
+    echo "Missing command reference: ${cmd}" >&2
+    missing=true
+  fi
+done
+
+for dir in "${REQUIRED_DIRS[@]}"; do
+  if ! rg -n "${dir}" "$README" > /dev/null; then
+    echo "Missing directory reference: ${dir}" >&2
+    missing=true
+  fi
+done
+
+if [ "$missing" = true ]; then
+  echo "Documentation checks failed. Update README.md or scripts/check-docs." >&2
+  exit 1
+fi
+
+echo "Documentation checks passed."
