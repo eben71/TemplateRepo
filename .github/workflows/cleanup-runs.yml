@@ -41,6 +41,7 @@ jobs:
                 echo "$branch_runs" \
                   | jq -r --argjson retain "$RETAIN_PER_BRANCH" \
                     '.workflow_runs
+                    | map(select(.status == "completed"))
                     | sort_by(.updated_at)
                     | reverse
                     | .[$retain:]
