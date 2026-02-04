@@ -11,3 +11,6 @@ paths-ignore:
   - "**/node_modules/**"
   - "**/venv/**"
   - "**/build/**"
+  - "**/coverage/**"
+  - "**/dist/**"
+  - "**/cache/**"

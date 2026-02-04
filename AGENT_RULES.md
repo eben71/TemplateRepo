@@ -1,35 +1,31 @@
-# Agent Quality Gates (Non-Negotiable)
+# AGENT_RULES.md
 
-These rules apply to all work performed in this repository and any derived repositories. They are mandatory quality gates.
+## Phase 2 MVP Build Status (Mandatory)
 
-## Security & Privacy
+- PhotoPrune is **past feasibility** and now in **Phase 2 MVP development**.
+- MVP product work **may** modify the app and services directly (not limited to `experiments/`).
+- Stay within the Phase 2 scope in `ROADMAP.md` and the user-provided phase instructions.
+- Keep dependencies minimal and well-justified.
 
-- **No secrets or PII** may be stored in code, logs, or committed files.
-- Use placeholders or environment variables for all credentials.
-- Follow security best practices for handling sensitive data.
+## Token Safety (Non-Negotiable)
 
-## Testing & Coverage
+- Never commit or log access/refresh tokens or authorization codes.
+- Token storage must be encrypted at rest (or system keychain if used).
+- `experiments/phase1/.tokens/` must remain untracked.
 
-- All changes must pass the full CI suite.
-- Test coverage must be **≥ 80%** for applicable code paths.
-- If coverage drops below 80%, the change must be updated or rejected.
+## Documentation Outputs (Required)
 
-## Documentation
+- Maintain the root docs:
+  - `DECISIONS.md`
+  - `RISK_REGISTER.md`
+  - `PHASE1_REPORT.md`
 
-- Documentation **must be updated** when behavior, public interfaces, or APIs change.
-- README updates are required when setup or usage changes.
+## Quality Gates
 
-## Dependencies
+- Security standards in `AGENTS.md` are mandatory.
+- Repo-wide tests must remain green; coverage must not drop below 80%.
+- CI checks must remain fully green.
 
-- Adding dependencies requires **explicit justification** in the change request or documentation.
-- Avoid unnecessary or redundant dependencies.
+## If Ambiguous
 
-## CI/CD Compliance
-
-- Changes must pass all CI checks before merge.
-- Quality scripts (coverage and documentation checks) must be maintained and updated to match project needs.
-
-## General Expectations
-
-- Follow least-privilege and secure-by-default practices.
-- Keep changes minimal, focused, and well-explained.
+- Stop and ask. Quality over speed.
