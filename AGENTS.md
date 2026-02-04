@@ -2,10 +2,10 @@
 
 ## Purpose
 
-**Status:** PhotoPrune is past feasibility and actively building the Phase 2 MVP application.
+**Status:** {placeholder}
 
 This file instructs development agents (e.g., CODEX) and reviewers on how to produce
-**secure, clean, testable, and maintainable code** for the PhotoPrune codebase.
+**secure, clean, testable, and maintainable code** for the {placeholder} codebase.
 
 Primary goals:
 
